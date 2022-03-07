@@ -9,11 +9,14 @@ export class App extends Component {
     super(props);
     this.state = {
       urls: [],
+      error: "",
     };
   }
 
   componentDidMount() {
-    getUrls().then((urls) => this.setState({ urls: urls }));
+    getUrls()
+      .then((urls) => this.setState({ urls: urls }))
+      .catch((error) => this.setState({ error: error }));
   }
 
   removePost = (id) => {
@@ -23,14 +26,19 @@ export class App extends Component {
 
   render() {
     return (
-      <main className="App">
-        <header>
-          <h1>URL Shortener</h1>
-          <UrlForm />
-        </header>
-
-        <UrlContainer urls={this.state.urls} removePost={this.removePost} />
-      </main>
+      <>
+        {this.state.error !== "" ? (
+          <p>Sorry, we're having technical difficulties!</p>
+        ) : (
+          <main className="App">
+            <header>
+              <h1>URL Shortener</h1>
+              <UrlForm />
+            </header>
+            <UrlContainer urls={this.state.urls} removePost={this.removePost} />
+          </main>
+        )}
+      </>
     );
   }
 }
