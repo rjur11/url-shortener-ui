@@ -80,7 +80,7 @@ describe("Should be able to visit the application and render all expected elemen
       .click()
       .get("div.url")
       .last()
-      .contains("http://localhost:3001/useshorturl/27");
+      .contains("http://localhost:3001/useshorturl/47");
   });
   it("Should be able to fill out the form and submit it to the page then check to see the card long url is rendered", () => {
     cy.visit("http://localhost:3000")
