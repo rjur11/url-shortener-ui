@@ -16,6 +16,11 @@ export class App extends Component {
     getUrls().then((urls) => this.setState({ urls: urls }));
   }
 
+  removePost = (id) => {
+    const updateUrls = this.state.urls.filter((post) => post.id !== id);
+    this.setState({ urls: updateUrls });
+  };
+
   render() {
     return (
       <main className="App">
@@ -24,7 +29,7 @@ export class App extends Component {
           <UrlForm />
         </header>
 
-        <UrlContainer urls={this.state.urls} />
+        <UrlContainer urls={this.state.urls} removePost={this.removePost} />
       </main>
     );
   }

@@ -22,3 +22,17 @@ export const postUrls = ({ id, long_url, short_url, title }) => {
     .then((response) => response.json())
     .catch((err) => console.log(err));
 };
+
+export const deleteUrls = ({ id }) => {
+  fetch(`${url}/${id}`, {
+    method: "DELETE",
+    body: JSON.stringify({
+      id: id,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .catch((err) => console.log(err));
+};
