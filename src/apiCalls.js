@@ -6,13 +6,11 @@ export const getUrls = () => {
     .then((data) => data.urls);
 };
 
-export const postUrls = ({ id, long_url, short_url, title }) => {
+export const postUrls = ({ long_url, title }) => {
   fetch(url, {
     method: "POST",
     body: JSON.stringify({
-      id: id,
       long_url: long_url,
-      short_url: short_url,
       title: title,
     }),
     headers: {

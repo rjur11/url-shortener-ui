@@ -23,11 +23,9 @@ class UrlForm extends Component {
   };
 
   handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     postUrls({
-      id: Date.now(),
       long_url: this.state.urlToShorten,
-      short_url: `http://localhost:3001/useshorturl/${Date.now()}`,
       title: this.state.title,
     });
     this.clearInputs();
@@ -58,7 +56,12 @@ class UrlForm extends Component {
           onChange={(e) => this.handleUrlChange(e)}
         />
 
-        <button className="shorten" onClick={(e) => this.handleSubmit(e)}>
+        <button
+          className="shorten"
+          onClick={(e) => {
+            this.handleSubmit(e);
+          }}
+        >
           Shorten Please!
         </button>
       </form>
