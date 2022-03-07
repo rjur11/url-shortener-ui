@@ -23,7 +23,7 @@ class UrlForm extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    console.log("click");
     postUrls({
       long_url: this.state.urlToShorten,
       title: this.state.title,
